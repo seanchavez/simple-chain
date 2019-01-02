@@ -17,6 +17,11 @@ class Blockchain {
   }
 
   addBlock(newBlock) {
+    newBlock.height = this.chain.length;
+    newBlock.timeStamp = new Date()
+      .getTime()
+      .toString()
+      .slice(0, -3);
     if (this.chain.length > 0) {
       newBlock.previousHash = this.chain[this.chain.length - 1].hash;
     }
